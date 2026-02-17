@@ -7,8 +7,8 @@ import pandas as pd
 import gspread
 from google.oauth2.service_account import Credentials
 
-SHOP_DOMAIN = os.environ["SHOP_DOMAIN"]
-TOKEN = os.environ["SHOPIFY_TOKEN"]
+SHOP_DOMAIN = os.environ["SHOP_DOMAIN"].strip().replace("https://", "").replace("http://", "").strip("/")
+SHOP_TOKEN = os.environ["SHOPIFY_TOKEN"]
 API_VERSION = os.getenv("API_VERSION", "2025-01")
 
 SHEET_ID = os.environ["SHEET_ID"]
@@ -16,7 +16,7 @@ TAB_NAME = os.getenv("TAB_NAME", "Pedidos")
 DAYS_BACK = int(os.getenv("DAYS_BACK", "7"))
 
 BASE_URL = f"https://{SHOP_DOMAIN}/admin/api/{API_VERSION}"
-HEADERS = {"X-Shopify-Access-Token": TOKEN}
+HEADERS = {"X-Shopify-Access-Token": SHOP_TOKEN}
 
 
 def format_datetime(date_string: Optional[str]) -> str:
