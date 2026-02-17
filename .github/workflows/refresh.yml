@@ -28,6 +28,6 @@ jobs:
           SHEET_ID: ${{ secrets.SHEET_ID }}
           GOOGLE_CREDS_JSON: ${{ secrets.GOOGLE_CREDS_JSON }}
           DAYS_BACK: "7"
-          TAB_NAME: "Pedidos"
+          TAB_NAME: "Hoja 2"
         run: |
           python refresh_sheet.py
